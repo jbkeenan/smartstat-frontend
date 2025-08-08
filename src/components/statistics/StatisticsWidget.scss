@@ -1,0 +1,51 @@
+.statistics-widget {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  
+  .widget-header {
+    background-color: #1E88E5;
+    color: white;
+    padding: 1rem;
+    
+    h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+  }
+  
+  .widget-content {
+    padding: 1rem;
+    
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      .stat-label {
+        color: #666;
+        font-size: 0.9rem;
+      }
+      
+      .stat-value {
+        font-weight: 500;
+        font-size: 1.1rem;
+        
+        &.positive {
+          color: #43A047;
+        }
+        
+        &.negative {
+          color: #E53935;
+        }
+      }
+    }
+  }
+}
