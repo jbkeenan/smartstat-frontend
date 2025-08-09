@@ -1,5 +1,5 @@
 import React from 'react';
-import './FAQPage.css';
+import '../components/FAQPage.css';
 
 const FAQPage: React.FC = () => {
   const faqs = [
