@@ -1219,6 +1219,166 @@ const businessAnalysis = {
   }
 };
 
+// API functions for vendor account management
+// Each vendor has its own set of endpoints.  These helpers make it
+// convenient to call the backend without repeating URL prefixes.
+const vendors = {
+  cielo: {
+    /**
+     * Check the status/health of the Cielo integration.
+     */
+    getStatus: async (): Promise<any> => {
+      try {
+        // In test mode return a static OK response
+        if (isTestModeActive()) {
+          return { vendor: 'cielo', status: 'ok' };
+        }
+        const response = await axios.get(`${API_URL}/vendors/cielo/status`);
+        return response.data;
+      } catch (error) {
+        return handleApiError(error);
+      }
+    },
+    /**
+     * List all Cielo vendor accounts accessible to the current user.
+     */
+    listAccounts: async (): Promise<any[]> => {
+      try {
+        if (isTestModeActive()) {
+          // Return empty list in test mode
+          return [];
+        }
+        const response = await axios.get(`${API_URL}/vendors/cielo/accounts`);
+        return response.data.accounts;
+      } catch (error) {
+        return handleApiError(error);
+      }
+    },
+    /**
+     * Create a new Cielo vendor account.  Requires an API key.
+     */
+    createAccount: async (data: { api_key: string; account_name?: string; property_id?: number | null }): Promise<any> => {
+      try {
+        if (isTestModeActive()) {
+          // Simulate creation in test mode by returning the payload with a mock ID
+          return {
+            id: `mock-cielo-${Date.now()}`,
+            vendor: 'cielo',
+            ...data,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          };
+        }
+        const response = await axios.post(`${API_URL}/vendors/cielo/accounts`, data);
+        return response.data.account;
+      } catch (error) {
+        return handleApiError(error);
+      }
+    }
+  },
+  nest: {
+    /**
+     * Check the status/health of the Nest integration.
+     */
+    getStatus: async (): Promise<any> => {
+      try {
+        if (isTestModeActive()) {
+          return { vendor: 'nest', status: 'ok' };
+        }
+        const response = await axios.get(`${API_URL}/vendors/nest/status`);
+        return response.data;
+      } catch (error) {
+        return handleApiError(error);
+      }
+    },
+    /**
+     * List all Nest vendor accounts accessible to the current user.
+     */
+    listAccounts: async (): Promise<any[]> => {
+      try {
+        if (isTestModeActive()) {
+          return [];
+        }
+        const response = await axios.get(`${API_URL}/vendors/nest/accounts`);
+        return response.data.accounts;
+      } catch (error) {
+        return handleApiError(error);
+      }
+    },
+    /**
+     * Create a new Nest vendor account.  Requires access and refresh tokens
+     * along with an expiration timestamp (ISO 8601 string).
+     */
+    createAccount: async (data: { access_token: string; refresh_token: string; expires_at: string; account_name?: string; property_id?: number | null }): Promise<any> => {
+      try {
+        if (isTestModeActive()) {
+          return {
+            id: `mock-nest-${Date.now()}`,
+            vendor: 'nest',
+            ...data,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          };
+        }
+        const response = await axios.post(`${API_URL}/vendors/nest/accounts`, data);
+        return response.data.account;
+      } catch (error) {
+        return handleApiError(error);
+      }
+    }
+  },
+  nethome: {
+    /**
+     * Check the status/health of the NetHome/Pioneer integration.
+     */
+    getStatus: async (): Promise<any> => {
+      try {
+        if (isTestModeActive()) {
+          return { vendor: 'nethome', status: 'ok' };
+        }
+        const response = await axios.get(`${API_URL}/vendors/nethome/status`);
+        return response.data;
+      } catch (error) {
+        return handleApiError(error);
+      }
+    },
+    /**
+     * List all NetHome vendor accounts accessible to the current user.
+     */
+    listAccounts: async (): Promise<any[]> => {
+      try {
+        if (isTestModeActive()) {
+          return [];
+        }
+        const response = await axios.get(`${API_URL}/vendors/nethome/accounts`);
+        return response.data.accounts;
+      } catch (error) {
+        return handleApiError(error);
+      }
+    },
+    /**
+     * Create a new NetHome vendor account.  Requires an API key.
+     */
+    createAccount: async (data: { api_key: string; account_name?: string; property_id?: number | null }): Promise<any> => {
+      try {
+        if (isTestModeActive()) {
+          return {
+            id: `mock-nethome-${Date.now()}`,
+            vendor: 'nethome',
+            ...data,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          };
+        }
+        const response = await axios.post(`${API_URL}/vendors/nethome/accounts`, data);
+        return response.data.account;
+      } catch (error) {
+        return handleApiError(error);
+      }
+    }
+  }
+};
+
 // Export all API functions
 export const api = {
   dashboard,
@@ -1226,7 +1386,8 @@ export const api = {
   thermostats,
   schedules,
   calendars,
-  businessAnalysis
+  businessAnalysis,
+  vendors
 };
 
 // For backward compatibility
