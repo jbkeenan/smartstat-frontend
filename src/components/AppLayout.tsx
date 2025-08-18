@@ -125,7 +125,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
 
               {user?.role === 'admin' && (
                 <a
-                  href="/admin"
+                  href="/admin/vendors"
                   className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"
                 >
                   <svg
@@ -148,7 +148,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
                       d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  Admin
+                  Vendors
                 </a>
               )}
             </nav>
