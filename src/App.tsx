@@ -13,6 +13,7 @@ import CalendarsPage from './pages/calendars/CalendarsPage';
 import StatisticsPage from './pages/statistics/StatisticsPage';
 import FAQPage from './pages/FAQPage';
 import NotFoundPage from './pages/NotFoundPage';
+import VendorsPage from './pages/admin/VendorsPage';
 import './styles/main.scss';
 
 const App: React.FC = () => {
@@ -60,6 +61,13 @@ const App: React.FC = () => {
           <Route path="/statistics" element={
             <ProtectedRoute>
               <StatisticsPage />
+            </ProtectedRoute>
+          } />
+
+          {/* Admin vendors route */}
+          <Route path="/admin/vendors" element={
+            <ProtectedRoute>
+              <VendorsPage />
             </ProtectedRoute>
           } />
           
