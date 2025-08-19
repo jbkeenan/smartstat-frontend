@@ -1,0 +1,32 @@
+/* Styles for the call-to-action section on the landing page */
+
+.cta-section {
+  background-color: #f9fafb;
+  padding: 4rem 0;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+.cta-content h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-content .btn {
+  margin-bottom: 1rem;
+}
+
+.cta-note {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
