@@ -89,10 +89,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-      background-image: none;
+      background-image: url('../assets/pattern.svg');
   background-size: cover;
   opacity: 0.1;
-}
 
 .hero .container {
   display: flex;
@@ -221,7 +220,7 @@
   right: 0;
   width: 50%;
   height: 100%;
-      background-image: none;
+      bbackground-image: url('../assets/graph-pattern.svg');
   background-size: cover;
   opacity: 0.05;
 }
@@ -431,7 +430,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-      background-image: none;
+     background-image: url('../assets/pattern.svg');
   background-size: cover;
   opacity: 0.1;
 }
