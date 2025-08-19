@@ -236,3 +236,12 @@ export const getThermostatStatistics = async (thermostatId: string, timeRange: s
   const response = await api.get(`/statistics/?thermostat_id=${thermostatId}&period=${timeRange}`);
   return response.data;
 };
+
+
+
+
+export const propertyService = {
+  getProperties,
+  createProperty: addProperty,
+  deleteProperty,
+};
